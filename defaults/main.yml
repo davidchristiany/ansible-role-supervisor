@@ -26,6 +26,9 @@ supervisor_programs: []
 #     killasgroup=true
 #     stopasgroup=true
 
+# A list of `group`s Supervisor will control.
+supervisor_group: []
+
 supervisor_nodaemon: false
 
 supervisor_log_dir: /var/log/supervisor

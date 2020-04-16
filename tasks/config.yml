@@ -28,3 +28,15 @@
   when: item.state|default('present') != 'absent'
   with_items: "{{ supervisor_programs }}"
   notify: restart supervisor
+
+- name: Ensure Supervisor group configs are present.
+  template:
+    src: group.conf.j2
+    dest: "{{ supervisor_config_path }}/conf.d/{{ item.name }}.conf"
+    force: yes
+    owner: root
+    group: root
+    mode: 0644
+  when: item.state|default('present') != 'absent'
+  with_items: "{{ supervisor_group }}"
+  notify: restart supervisor
